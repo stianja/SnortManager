@@ -1,0 +1,42 @@
+/*
+
+
+
+
+
+*/
+
+@font-face { 
+font-family: commodore64;
+src: url('/resources/stylesheet/error/PetMe128.ttf')
+}
+
+body{
+	background: #5F53FE;
+	margin: 0px;
+	padding: 0px;
+	border:0px;
+	font-family: commodore64;
+	color: #5F53FE;
+	width: 100%
+	height: 100%
+}
+
+#content {
+	background: #211BAE;
+	inherit: 100%;
+	margin-top: 60px;
+	padding: 10px;
+	line-height: 2em;
+	position: relative;
+}
+
+.footer{
+	height: 60px;
+}
+
+.center {
+	margin: auto auto auto auto;
+	text-align:center;
+}
+

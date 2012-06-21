@@ -1,0 +1,65 @@
+{#
+
+Main template used for Snortmanager. This template provides the main components to present data.
+
+All files that needs to be includes should be in this file!
+
+#}
+<!DOCTYPE html>
+<html>
+<head>
+{% block head %}
+<title>Snortmanager - {{ title }}</title>
+
+<link rel="stylesheet" media="screen" type="text/css" href="/resources/stylesheet/snortmanager/jquery-ui-1.8.19.custom.css" />
+<link rel="stylesheet" media="screen" type="text/css" href="/resources/stylesheet/stylesheet.css" />
+<script type="text/javascript" src="/resources/js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="/resources/js/jquery-ui-1.8.19.custom.min.js"></script>
+<script type="text/javascript" src="/resources/js/snortmanager.js"></script>
+{% endblock %}
+
+{% if service_lock %}
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		snortmanager.show_systemlock();
+	});
+</script>
+{% endif %}
+
+</head>
+<body>
+<div id="main">
+	<div id="left">
+		<a href="/"><img src="/resources/images/SnortLogo.png" alt="SnortLogo" />
+		<h1>Snortmanager</h1></a>
+	{% include 'menu.html' %}
+	</div>
+	
+	<div id="right">
+<div id="header">
+	{% if page_title != None %}
+	<h2>{{ page_title }}</h2>
+	{% else %}
+	<h2>Title missing</h2>
+	{% endif %}
+
+</div>		
+<div id="display_content">
+<div id="error_area">
+				<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+					<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+					<span id="error_text"></span></p>
+				</div>
+			</div>
+
+		{%block content %}
+{# This is where the main content goes, it's import automatically by the Snortmanager rendrer #}
+		{% endblock %}
+</div>
+	</div>
+
+</div>
+</body>
+
+</html>

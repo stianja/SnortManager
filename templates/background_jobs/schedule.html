@@ -1,0 +1,35 @@
+{# Snortmanagers interface for presentation of scheduled tasks. #}
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+
+<table width="70%" align="center">
+<thead>
+
+	<tr>
+		<td colspan="2"></td>
+		<td><button id="add_schedule">Add</button></td>
+	</tr>
+	<tr><th>Job name:</th>
+	<th>Scheduled:</th>
+	</tr>
+</thead>
+<tbody>
+{% for job in jobs %}
+<tr>
+<td>{{job.name}}</td>
+<td>{{job.trigger}}</td>
+<td><button class="delete_schedule" value="{{job.name}}">Delete</button></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<div id="delete_schedule">
+<p>This will delete scheduled job. Are you sure?</p>
+</div>
+{% endblock %}	

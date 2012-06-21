@@ -1,0 +1,26 @@
+{# Snortmanagers list of external sources to download signatures from. #}
+{% extends "snortmanager.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+
+
+<p>External sources to download rules.</p>
+<button onClick="parent.location='source/'">Add url</button>
+<table id = "list">
+<thead>
+	<tr><th>Active</th><th>Url</th></tr>
+</thead>
+<tbody>
+{% for source in sources %}
+<tr><td>{{'%s' % 'Active' if source.active == 1 else 'Inactive'}}</td>
+<td>
+<a href="/rules/source/{{ source.id }}/" >{{source.url}}</a>
+</td></tr>
+{% endfor %}
+</tbody>        
+</table>
+
+{% endblock %}

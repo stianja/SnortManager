@@ -1,0 +1,29 @@
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<h2>{{ page_title }}</h2>
+
+{% if content %}
+{{ content }}
+{% endif %}
+
+<!--<form method="POST" name="test" action="add_url/" class="form">
+<input type="checkbox" name="active" id="active"><label for="active">Active</label></input>
+<input type="text" name="rule-url" id="rule-url" size="100" />
+<input type="submit" id="submit"/>
+</form>-->
+
+<form id="new_policy" name="new_policy" class="form" method="POST" action="add/">
+<table>
+<tr>
+	<td><input type="text" class="clear" size=50 id="name" name="name" value="Name:" /></td>
+	<td><input type="text" class="clear" size=50 id="description" name="description" value="Description:" /></td>
+	<td><input type="submit" id="submit" /></td>
+</tr>
+</table>
+</form>
+
+{% endblock %}	

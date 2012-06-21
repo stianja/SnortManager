@@ -1,0 +1,209 @@
+/*
+
+
+
+
+
+*/
+
+
+body{
+	background: #fff;
+	margin: 0px;
+	padding: 0px;
+	border:0px;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+body, html {
+	height: 100%;
+	width: 100%;
+}
+#main {
+	min-height: 100%;
+	clear:both;
+	overflow:hidden;
+}
+
+#right{
+	min-height: 100%;
+	width: 100%;
+	right: 250px;
+	top: 0;
+}
+
+.urllist{
+	background: white;
+}
+.urllist ul{
+	background: white;
+}
+
+.urlliste li{
+	display: cell;
+}
+
+#header{
+	top: 0px;
+	background: #ccc;
+	height: 40px;
+	color: #444;
+	width: 100%;
+	padding: 10px;
+
+}
+
+############ Table list ############ 
+
+#job_list {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#list{
+	margin: 0 auto 0 auto;
+}
+
+#list td, #list th{
+	border-right: #888 solid 1px;
+	padding:2px;
+	
+}
+
+#list .grey{
+	background: #ccc;
+
+}
+
+#header h2{
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.no_border{
+	border: 0px;
+}
+
+
+#left{
+	border-right: #888 solid 5px;
+	border-bottom: #888 solid 5px;
+	width: 250px;
+	background: #ccc;
+	padding: 5px;
+	margin: 0px;
+	float: left;
+	border-bottom-right-radius: 5px;
+}
+
+#left img{
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#left ul{
+	padding: 0px;
+}
+
+#left li{
+	list-style: none;
+	display: block;
+	padding: 4px;
+	margin: 0px;
+	border-bottom: #888 solid 1px;
+}
+
+.sub_menu {
+	margin-left: 5px;
+}
+.sub_menu li{
+	border: 0px;
+}
+
+#display_content{
+	padding-left: 10px;
+}
+/* Font style */
+
+a, a:hover, a:visited, a:link, a:active {
+	text-decoration: none;
+	font-style: none;
+	color: #000;
+
+}
+
+.form input:text{
+	height: 20px;
+	background: #CCC;
+}
+
+
+/* ####### TABLES ####### */
+
+#policy_object_list{
+	align: center;
+	margin: 0 auto 0 auto;
+	
+}
+
+#policy_object_list tr{
+	
+}
+#policy_object_list td{
+	padding: 2em;
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.dropable{
+	background: #ccc;
+}
+
+#### test ####
+
+#overlay {
+	display:none; 
+	top: 0; 
+	right: 0; 
+	bottom: 0; 
+	left: 0; 
+	margin-right: auto;
+	margin-left: auto; 
+	position: fixed; 
+	width: 100%; 
+	z-index: 100;
+}
+
+#blanket { 
+	background-color: #000000; 
+	top: 0; 
+	bottom: 0; 
+	left: 0; 
+	display: block; 
+	opacity: 0.8; 
+	position: absolute; 
+	width: 100%;
+}
+
+.left_adjust{
+	text-align: left;
+}
+
+.dialog { 
+	display: none; 
+	margin: 100px auto; 
+	position: relative; 
+	width: 500px; 
+	padding: 40px; 
+	background: white; 
+	-moz-border-radius: 10px;
+}
+
+.disabled_button{
+	background: silver;
+	color: grey;
+}
+
+.hide_error{
+	display: none;
+}

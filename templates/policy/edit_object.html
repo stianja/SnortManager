@@ -1,0 +1,40 @@
+{# Snortmanagers interface for editing policy objects #}
+
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %} 
+
+<div title="Edit policy object">
+	<p class="validateTips">It's all about the bejamins baby!</p>
+
+	<form class="form" action="add/" method="POST">
+		<input type="hidden" name="object_id" id="policy_id" value="{{policy_object.id}}" />
+		<table>
+			<tr>
+				<td>
+					<select>
+					<option {{ 'selected="selected"' if policy_object.type == 0 }} value=0>Prepend</option>
+					<option {{ 'selected="selected"' if policy_object.type == 1 }} value=1>Content</option>
+					<option {{ 'selected="selected"' if policy_object.type == 2 }} value=2>Append</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea cols="30" name="object_content" rows="8">{{ policy_object.contents }}</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" id="submit" name="submit" value="Submit" />
+				</td>
+			</tr>
+		</table>
+
+	</form>
+</div>
+{% endblock %}	

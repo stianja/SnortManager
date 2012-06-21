@@ -1,0 +1,19 @@
+{# Snortmanagers 404 page, used when page is not found. #}<!DOCTYPE html>
+<html>
+<head>
+    <title>%(status)s</title>
+    
+<link rel="stylesheet" href="/resources/stylesheet/error/error.css" media="screen" />
+
+</head>
+    <body>
+    	<div id="content">
+    		<p class="center">**** SNORTMANAGER 64 BASIC V2 ****</p>
+    		<p>64K RAM SYSTEM 38911 BASIC BYTES FREE</p>
+			<p>READY<br/>Error: %(status)s</p>
+			<p>READY<br/>Message: %(message)s</p>
+			<p>%(traceback)s</p>
+		</div>
+		<div class="footer"></div>
+    </body>
+</html>

@@ -1,0 +1,102 @@
+{# Snortmangers interface for editing policies. #}
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %} 
+
+<p>
+	<b>Information about policy</b><br/>
+	<b>Name:</b> {{ policy.info.name }}<br/>
+	<b>Description:</b> {{ policy.info.description }}
+</p>
+
+<p class="center">Click on policyobject to edit</p>
+<form id="policy_objects" class="form" action="/policy/edit_order/" method="POST">
+<table id="policy_object_list">
+<thead>
+<tr>
+<span class="no_border">
+	<td colspan="3"></td>
+	<td><button onClick="parent.location='/policy/edit/new_object/{{policy.info.id}}/'"">Add object</object></td>
+	<td><input type="submit" value="Save order" />
+	</td>
+</span>
+</tr>
+{% if policy.info.id != 0 %}
+<tr id="root">
+	<td colspan="5">Root</td>
+</tr>
+{% endif %}
+</thead>
+<tbody>
+{% for object in policy.contents %}
+
+<tr id="{{object.id}}">
+{% if object.object %}
+<td class="left_adjust">{{ object.object.type|convert_type() }}</td>
+<td>{{ object.object.contents|nl2br() }} </td>
+<td><button class="edit_object" value="{{object.id}}">Edit</button></td>
+<td><button class="choose_object" value="{{ object.id }}">Change object</button></td>
+<td><button value="{{object.id}}" class="delete_object">Delete</button>
+{% else %}
+<td colspan="2">No policy object added yet</td><td>
+<button value="{{object.id}}" class="edit_object">New</button></td>
+<td><button class="choose_object" value="{{ object.id }}">Change object</button></td>
+<td><button value="{{object.id}}" class="delete_object">Delete</button>
+{% endif %}
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+</form>	
+<div id="edit-object-dialog" title="Edit policy object">
+
+		<form id="edit-object" class="form">
+			<input type="hidden" id="object-id" name="object-id" value="" />
+			<input type="hidden" id="policy-id" name="policy-id" value="" />
+			<select name="object-type" id="object-type" style="width: 40%;">
+			<option value=0>Prepend</option>
+			<option value=1>Content</option>
+			<option value=2>Append</option>
+			</select><br/>
+			<textarea cols="30" id="object-content" name="object-content" rows="8"></textarea><br/>
+		</form>
+</div>
+
+<div id="choose-object-dialog">
+		<p>This dialog lets you choose a object for your policy</p>
+			<form id="choose-object" class="form">
+			<input type="hidden" id="object-id" name="object-id" value="" />
+			<input type="hidden" id="policy-object" name="policy-id" value="" />
+			<select id="select-object" style="width: 40%;">
+			<option value="0">Choose object</option>
+			{% for object in all_objects %}
+				<option value="{{object.id}}">{{object.id}}</option>
+			{% endfor %}
+			</select><br/>
+		
+			<label for="object-type"><b>Object type:</b></label>
+			<select disabled="disabled" id="object-type" style="width: 40%;">
+			<option value=0>Prepend</option>
+			<option value=1>Content</option>
+			<option value=1>Append</option>
+			</select><br/>
+
+			<textarea cols="30" disabled="disabled" id="policy-contents" rows="8"></textarea><br/>
+	</form>
+</div>	
+
+</div>
+
+<div id="dialog-confirm" title="Delete object from list?">
+	<form id="delete_object" method="POST" action="/policy/remove_object/">
+	<input type="hidden" name="policy-id" id="policy-id" value="{{policy.info.id}}" />
+	<input type="hidden" name="object-id" id="object-id" value="" />
+	<p>This will remove the object from the policy chain. Are you sure?</p>
+	</form>
+</div>
+{% endblock %}	

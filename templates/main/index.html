@@ -1,0 +1,23 @@
+{# Landing page for Snortmanager. Also called Root page. #}
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+<p>Activity log</p>
+
+<table id="list">
+<thead>
+<tr><th>Timestamp</th><th>Module</th><th>Event</th></tr>
+</thead>
+<tbody>
+{% for content in event_content %}
+<tr><td>{{content.timestamp}}</td><td> {{content.module}}</td><td>{{content.text}}</td></tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+{% endblock %}	

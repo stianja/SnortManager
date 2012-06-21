@@ -1,0 +1,61 @@
+{# Snortmanagers interface for editing Sensors. #}
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %} 
+
+<table align="center">
+<td><tr>
+<td><select id="location_list" name="location_list">
+{% for location in locations %}
+<option value="{{location.id}}">{{location.name}}</option>
+{% endfor %}
+</select></td>
+<td><button class="new_sensor" value="0">Add sensor</button></td>
+<td><button class="new_location" name="new_location">Add location</button></td>
+</tr>
+</table>
+
+{% for location in location_list %}
+<table align="center" width="50%">
+<thead>
+<tr>
+	<td colspan="3" style="text-align: center;">{{location.name}}</td>
+	<td colspan="2"><button class="new_sensor" value="{{location.id}}">Add</button></td>
+</tr>
+<tr><th>Name</th><th>IP</th><th>Description</th></tr>
+</thead>
+<tbody>
+	{% for sensor in location.sensors %}
+	<tr>
+		<td>{{ sensor.name }}</td>
+		<td>{{ sensor.ip }}</td>
+		<td>{{ sensor.description }}</td>
+		<td><button class="edit_sensor" value="{{ sensor.id }}">Edit</button></td>
+		<td><button class="delete_sensor" value="{{ sensor.id }}">Delete</button></td>
+	</tr>
+	{% endfor %}
+</tbody>
+</table>
+
+{% endfor %}
+
+<div id="edit_sensor_form"></div>
+
+<div id="add_new_location">
+
+<form name="add_new_location" id="add_location_form">
+	<table><tr><td><label for="location_name">Name:</label></td><td>
+	<input type="textfield" name="location_name" id="location_name" /></td></tr>
+	</table>
+	</form>
+</div>
+
+<div id="delete_sensor">
+<p>This will remove the sensor from Snortmanager. Do you wish to continue?</p>
+</div>
+
+
+{% endblock %}	

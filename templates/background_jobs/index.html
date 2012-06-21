@@ -1,0 +1,32 @@
+{# Snortmanagers index/landing page for background tasks. #}
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+<form name="background_jobs">
+<table align="center">
+<thead>
+	<tr><th>Job name:</th><th>Description:</th><th>Start</th></tr>
+</thead>
+<tbody>
+<tr>
+	<td>Generate configuration files</td>
+	<td>This button creates several configuration files</td>
+	<td><button class="start_job" value="create_configuration_files">Start job</button></td>
+</tr>
+<tr>
+	<td>Update Snort rules</td>
+	<td>Download Snort rules and update database</td>
+	<td><button class="start_job" value="update_rules">Start job</button></td>
+</tr>
+</tbody>
+</table>
+</form>
+
+<div id="confirm_job_execution">
+<p><b>Warning:</b> This will start a background task and enable a write blocker to the database. Are you sure you know what you're doing?</p>
+</div>
+{% endblock %}	

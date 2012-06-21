@@ -1,0 +1,13 @@
+{# Used for presentation of content that doesn't need its own HTML-file #}
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+{% if content %}
+{{ content }}
+{% endif %}
+
+{% endblock %}	

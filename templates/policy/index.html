@@ -1,0 +1,34 @@
+{# Snortmanagers interface for policy administration #}
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %} 
+
+
+<h3>List of policychain</h3>
+<form class="form" name="list_polices" id="list_policies">
+<table width="60%" align="center">
+<tr><th>Name</th><th>Description</th></tr>
+{% for policy in policy_chain %}
+<tr><td>{{ policy.name }}</td><td>{{ policy.description }}</td>
+<td>
+<a href="/policy/delete/{{policy.id}}">Delete</a>
+<a href="/policy/edit/policy/{{policy.id}}/">Edit</a></tr>
+{% endfor %}
+</table>
+</form>
+
+
+<form id="new_policy" name="new_policy" class="form" method="POST" action="add/">
+<table>
+<tr>
+	<td><input type="text" class="clear" size=50 id="name" name="name" value="Name:" /></td>
+	<td><input type="text" class="clear" size=50 id="description" name="description" value="Description:" /></td>
+	<td><input type="submit" id="submit" /></td>
+</tr>
+</table>
+</form>
+
+{% endblock %}	

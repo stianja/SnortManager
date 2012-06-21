@@ -1,0 +1,11 @@
+{# Test page used for development, kept in case of error #}
+
+{% extends "snortmanager.html" %}
+{% block title %}Secondpage{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<p>Test page, should not be a part of system</p>
+
+{% endblock %}

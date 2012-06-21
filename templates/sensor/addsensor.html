@@ -1,0 +1,53 @@
+{# Deprecated interface for adding sensors #}
+
+{% extends "snortmanager.html" %}
+{% block title %}{{siteHeader}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<h2>{{ page_title }}</h2>
+
+{% if content %}
+{{ content }}
+{% endif %}
+
+
+
+
+<form name="add_sensor" id="add_sensor" class="form" method="POST" action="/sensor/save/">
+<table>
+<p>Insert information about the new sensor</p>
+<tr><td>Name:</td><td><input type="text" id="sensor_name" name="sensor_name" /></td></tr>
+<tr><td>IP:</td><td><input type="text" id="sensor_ip" name="sensor_ip" /></td></tr>
+<tr><td>Location:</td><td>
+<select name="sensor_location" id="sensor_location">
+{% for location in locations%}
+<option value="{{location.id}}">{{location.name}}</option>
+{% endfor %}
+<option value="0">Add new</option>
+</select></td></tr>
+<tr><td>Description:</td><td><input type="text" id="sensor_description" name="sensor_description" /></td></tr>
+<tr><td><input type="hidden" name="sensor_id" id="sensor_id" value="0" /></td></tr>
+<tfoot>
+<tr>
+	<td><input type="reset"></td>
+	<td><input type="submit"></td>
+</tr>
+</tfoot>
+</table>
+</form>
+
+<div id="add_new_location">
+<form name="add_location_form" id="add_location_form">
+<table><tr><td><label for="location_name">Name:</label></td><td>
+<input type="textfield" name="location_name" id="location_name" /></td></tr>
+</table>
+</form>
+</div>
+
+
+
+{% endblock %}	
+
+

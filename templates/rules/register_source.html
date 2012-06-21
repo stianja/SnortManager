@@ -1,0 +1,16 @@
+{# Interface for registering sources. Signature download. #}
+{% extends "snortmanager.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+<form method="POST" name="source" action="/rules/register/" class="form">
+<input type="checkbox" {{ 'checked="checked"' if source_url.active != 0 }} name="active" id="active"><label for="active">Active</label></input>
+<input type="text" name="source-url" id="source-url" {{ 'value="%s"' % source_url.url if source_url }}  size="100" />
+{% if source_url %}
+<input type="hidden" name="source-id" id="source.id" value="{{source_url.id}}" />
+{% endif %}
+<input type="submit" id="submit"/>
+</form>
+{% endblock %}
